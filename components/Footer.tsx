@@ -1,9 +1,9 @@
-
 "use client";
 
 import { Mail, Phone, Linkedin, Twitter, Instagram, ArrowRight, Sparkles, MapPin } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { companyInfo } from "@/app/metadata";
 
 const quickLinks = [
   { href: "/about", label: "About Us" },
@@ -80,7 +80,7 @@ export function Footer() {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                    Agentic-AI
+                    Agentic AI AMRO
                   </span>
                   <span className="text-sm text-purple-400 font-medium">Ltd</span>
                 </div>
@@ -94,30 +94,30 @@ export function Footer() {
               {/* Contact Info */}
               <div className="space-y-3">
                 <Link
-                  href="mailto:info@agentic-ai.ltd"
+                  href={`mailto:${companyInfo.email}`}
                   className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors duration-200 group"
                 >
                   <div className="p-2 rounded-full bg-white/5 group-hover:bg-purple-500/20 transition-colors duration-200">
                     <Mail className="w-4 h-4" />
                   </div>
-                  <span>info@agentic-ai.ltd</span>
+                  <span>{companyInfo.email}</span>
                 </Link>
 
                 <Link
-                  href="tel:+442080586160"
+                  href={`tel:${companyInfo.phone}`}
                   className="flex items-center space-x-3 text-gray-400 hover:text-white transition-colors duration-200 group"
                 >
                   <div className="p-2 rounded-full bg-white/5 group-hover:bg-purple-500/20 transition-colors duration-200">
                     <Phone className="w-4 h-4" />
                   </div>
-                  <span>+44 20 8058 6160</span>
+                  <span>{companyInfo.phone}</span>
                 </Link>
 
                 <div className="flex items-center space-x-3 text-gray-400">
                   <div className="p-2 rounded-full bg-white/5">
                     <MapPin className="w-4 h-4" />
                   </div>
-                  <span>71-75 Shelton Street, London, UK</span>
+                  <span>{companyInfo.address.city}, {companyInfo.address.county}, {companyInfo.address.country}</span>
                 </div>
               </div>
             </motion.div>
@@ -228,7 +228,7 @@ export function Footer() {
           className="py-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between"
         >
           <p className="text-sm text-gray-500 mb-4 md:mb-0">
-            © 2025 Agentic-AI Ltd. All rights reserved. | Empowering the Future with Autonomous Intelligence
+            © 2025 Agentic AI AMRO Ltd. All rights reserved. | Empowering the Future with Autonomous Intelligence
           </p>
 
           {/* Social Media Icons */}

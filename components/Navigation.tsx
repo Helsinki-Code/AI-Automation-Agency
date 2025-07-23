@@ -54,7 +54,7 @@ export function Navigation() {
               </div>
               <div className="flex flex-col">
                 <span className="text-xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                  Agentic-AI
+                  Agentic AI AMRO
                 </span>
                 <span className="text-xs text-purple-400 font-medium">Ltd</span>
               </div>

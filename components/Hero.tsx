@@ -130,14 +130,16 @@ export function Hero() {
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
-          <Button
-            variant="outline"
-            size="lg"
-            className="group border-purple-500/50 hover:border-purple-400 bg-transparent text-white px-8 py-4 rounded-full text-lg font-semibold backdrop-blur-sm hover:bg-purple-600/10 transition-all duration-300"
-          >
-            <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
-            Watch Demo
-          </Button>
+          <Link href="/services">
+            <Button
+              variant="outline"
+              size="lg"
+              className="group border-purple-500/50 hover:border-purple-400 bg-transparent text-white px-8 py-4 rounded-full text-lg font-semibold backdrop-blur-sm hover:bg-purple-600/10 transition-all duration-300"
+            >
+              <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
+              View Services
+            </Button>
+          </Link>
         </motion.div>
 
         {/* Video Section */}
