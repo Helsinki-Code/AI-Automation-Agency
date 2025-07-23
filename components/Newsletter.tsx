@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -7,14 +6,14 @@ import { Input } from "@/components/ui/input";
 import { Mail, CheckCircle, AlertCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export function Newsletter() {
+export default function Newsletter() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!email || !email.includes('@')) {
       setStatus("error");
       setMessage("Please enter a valid email address");
@@ -22,7 +21,7 @@ export function Newsletter() {
     }
 
     setStatus("loading");
-    
+
     try {
       const response = await fetch('/api/newsletter', {
         method: 'POST',
@@ -60,11 +59,11 @@ export function Newsletter() {
         <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
           <Mail className="w-8 h-8 text-white" />
         </div>
-        
+
         <h3 className="text-2xl font-bold text-white mb-4">
           Stay Updated with AI Insights
         </h3>
-        
+
         <p className="text-gray-400 mb-6">
           Get the latest updates on AI automation, industry trends, and exclusive insights delivered to your inbox.
         </p>
@@ -80,7 +79,7 @@ export function Newsletter() {
               disabled={status === "loading"}
             />
           </div>
-          
+
           <Button
             type="submit"
             disabled={status === "loading" || status === "success"}

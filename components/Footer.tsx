@@ -26,9 +26,6 @@ const resources = [
   { href: "/use-cases", label: "Use Cases" },
 ];
 
-// Assuming Newsletter component is defined elsewhere, import it
-import Newsletter from "@/components/Newsletter";
-
 export function Footer() {
   return (
     <footer className="relative bg-gradient-to-b from-[#0A051E] via-[#120B2E] to-black overflow-hidden">
@@ -62,10 +59,6 @@ export function Footer() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Newsletter Section */}
-        <div className="relative mb-16">
-          <Newsletter />
-        </div>
 
         {/* Main Footer Content */}
         <div className="py-16">
@@ -198,34 +191,7 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Newsletter Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="py-12 border-t border-white/10"
-        >
-          <div className="max-w-2xl mx-auto text-center">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Stay Ahead with AI Insights
-            </h3>
-            <p className="text-gray-400 mb-6">
-              Get the latest updates on agentic AI, automation trends, and exclusive insights delivered to your inbox.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 transition-colors"
-              />
-              <button className="px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-200 flex items-center justify-center space-x-2">
-                <span>Subscribe</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-        </motion.div>
+        
 
         {/* Bottom Section */}
         <motion.div
