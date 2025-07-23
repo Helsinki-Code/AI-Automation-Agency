@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { companyInfo } from "@/app/metadata";
 import Newsletter from "@/components/Newsletter";
+import Image from "next/image";
 
 const quickLinks = [
   { href: "/about", label: "About Us" },
@@ -74,12 +75,13 @@ export function Footer() {
             >
               {/* Logo */}
               <div className="flex items-center space-x-3 mb-6">
-                <div className="relative">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 via-blue-500 to-pink-500 rounded-xl flex items-center justify-center">
-                    <Sparkles className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl opacity-30 blur" />
-                </div>
+                <Image
+                  src="/logo.png"
+                  alt="Agentic AI"
+                  width={40}
+                  height={40}
+                  className="h-10 w-10"
+                />
                 <div className="flex flex-col">
                   <span className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
                     Agentic AI AMRO

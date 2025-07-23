@@ -1,9 +1,9 @@
-
 "use client";
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Play, Sparkles, Zap, Bot } from "lucide-react";
 import dynamic from "next/dynamic";
 
@@ -20,7 +20,7 @@ export function Hero() {
       {/* Animated Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A051E] via-[#120B2E] to-[#1A0B3A]" />
       <div className="absolute inset-0 grid-overlay opacity-20" />
-      
+
       {/* Floating Animation Orbs */}
       <motion.div
         animate={{
@@ -74,6 +74,15 @@ export function Hero() {
         transition={{ duration: 0.8 }}
         className="text-center max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
       >
+          <div className="flex justify-center mb-8">
+            <Image
+              src="/logo.png"
+              alt="Agentic AI"
+              width={80}
+              height={80}
+              className="h-20 w-20"
+            />
+          </div>
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
