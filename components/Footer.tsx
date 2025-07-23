@@ -90,7 +90,7 @@ export function Footer() {
           className="mt-16 pt-8 border-t border-white/10 text-center"
         >
           <p className="text-sm text-gray-500">
-            © {new Date().getFullYear()} AI Automation Agency. All rights reserved.
+            © 2025 Amrosoft | Empowering Agentic AI for the Future
           </p>
         </motion.div>
       </div>

@@ -20,29 +20,47 @@ export function Navigation() {
               <div className="w-8 h-8 rounded bg-white/10 flex items-center justify-center">
                 <div className="w-4 h-4 bg-gradient-to-r from-purple-500 to-purple-600 rounded-sm transform rotate-45" />
               </div>
-              <span className="text-xl font-semibold text-white">AI Agency</span>
+              <span className="text-xl font-semibold text-white">Agentic-AI Ltd</span>
             </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-1">
               <Link href="/about" className="nav-button-ghost nav-button">
-                About
+                About Us
+              </Link>
+              <Link href="/what-is-agentic-ai" className="nav-button-ghost nav-button">
+                What is Agentic AI?
               </Link>
               <Link href="/services" className="nav-button-ghost nav-button">
                 Services
               </Link>
-              <Link href="/pricing" className="nav-button-ghost nav-button">
-                Pricing
+              <Link href="/use-cases" className="nav-button-ghost nav-button">
+                Use Cases
+              </Link>
+              <Link href="/chatbots" className="nav-button-ghost nav-button">
+                Chatbots
+              </Link>
+              <Link href="/consulting" className="nav-button-ghost nav-button">
+                Consulting
+              </Link>
+              <Link href="/case-studies" className="nav-button-ghost nav-button">
+                Case Studies
+              </Link>
+              <Link href="/resources" className="nav-button-ghost nav-button">
+                Resources
+              </Link>
+              <Link href="/blog" className="nav-button-ghost nav-button">
+                Blog
               </Link>
               <Link href="/contact" className="nav-button-ghost nav-button">
-                Contact
+                Contact Us
               </Link>
             </div>
 
             {/* Get Started Button - Desktop */}
             <div className="hidden lg:flex items-center">
               <Link
-                href=""
+                href="https://calendly.com/agentic-ai/agentic-ai"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full px-6 py-2 font-medium hover:shadow-lg transition-all duration-200 hover:scale-105"
@@ -83,7 +101,14 @@ export function Navigation() {
                   className="text-white hover:text-purple-400 transition-colors px-4 py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  About
+                  About Us
+                </Link>
+                <Link
+                  href="/what-is-agentic-ai"
+                  className="text-white hover:text-purple-400 transition-colors px-4 py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  What is Agentic AI?
                 </Link>
                 <Link
                   href="/services"
@@ -93,21 +118,56 @@ export function Navigation() {
                   Services
                 </Link>
                 <Link
-                  href="/pricing"
+                  href="/use-cases"
                   className="text-white hover:text-purple-400 transition-colors px-4 py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Pricing
+                  Use Cases
+                </Link>
+                <Link
+                  href="/chatbots"
+                  className="text-white hover:text-purple-400 transition-colors px-4 py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Chatbots
+                </Link>
+                <Link
+                  href="/consulting"
+                  className="text-white hover:text-purple-400 transition-colors px-4 py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Consulting
+                </Link>
+                <Link
+                  href="/case-studies"
+                  className="text-white hover:text-purple-400 transition-colors px-4 py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Case Studies
+                </Link>
+                <Link
+                  href="/resources"
+                  className="text-white hover:text-purple-400 transition-colors px-4 py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Resources
+                </Link>
+                <Link
+                  href="/blog"
+                  className="text-white hover:text-purple-400 transition-colors px-4 py-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Blog
                 </Link>
                 <Link
                   href="/contact"
                   className="text-white hover:text-purple-400 transition-colors px-4 py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Contact
+                  Contact Us
                 </Link>
                 <Link
-                  href=""
+                  href="https://calendly.com/agentic-ai/agentic-ai"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="self-start inline-flex items-center space-x-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full px-6 py-3 font-medium"

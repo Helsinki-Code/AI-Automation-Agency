@@ -22,7 +22,7 @@ export async function POST(req: Request) {
       <p>${message}</p>
     `;
     sendSmtpEmail.sender = { name: name, email: email };
-    sendSmtpEmail.to = [{ email: process.env.ADMIN_EMAIL! }];
+    sendSmtpEmail.to = [{ email: "info@agentic-ai.ltd" }];
     sendSmtpEmail.replyTo = { email: email };
 
     const result = await apiInstance.sendTransacEmail(sendSmtpEmail);
