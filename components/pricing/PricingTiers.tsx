@@ -1,80 +1,82 @@
+
 "use client";
+
 import { motion } from "framer-motion";
-import { Bot, Brain, LineChart, Workflow, Cpu } from "lucide-react";
+import { Check, Star, Zap, Crown } from "lucide-react";
 import Link from "next/link";
-const services = [
+
+const tiers = [
   {
-    title: "AI Agents Development",
-    description: "Build intelligent AI agents tailored to your business needs. From customer service bots to advanced decision-making agents, we create solutions that enhance productivity and efficiency.",
-    icon: Bot,
-    deliverables: [
-      "Fully trained AI agents optimized for specific business functions",
-      "Integration with platforms like Slack, CRM systems, or proprietary apps",
-      "Custom-built knowledge base integration",
-      "Continuous performance optimization"
+    name: "Starter",
+    icon: Zap,
+    description: "Perfect for small businesses starting their AI journey",
+    price: "Custom",
+    period: "Based on scope",
+    features: [
+      "Basic AI automation setup",
+      "Simple chatbot integration",
+      "Email support",
+      "Basic analytics dashboard",
+      "1 month support included",
+      "Small-scale deployment"
     ],
-    timeline: "4-6 weeks",
-    gradient: "from-purple-600 to-pink-600"
+    limitations: ["Limited to 1,000 monthly interactions", "Basic customization options"],
+    cta: "Get Started",
+    popular: false,
+    gradient: "from-blue-500 to-cyan-500"
   },
   {
-    title: "Fine-Tuning & Training LLMs",
-    description: "Customize pre-trained AI models like GPT to understand and cater to your unique business context.",
-    icon: Brain,
-    deliverables: [
-      "Fine-tuned LLM trained on your proprietary data",
-      "Domain-specific capabilities for customer queries",
-      "API integration for seamless access",
-      "Regular model updates and improvements"
+    name: "Professional",
+    icon: Star,
+    description: "Ideal for growing businesses with advanced AI needs",
+    price: "Custom",
+    period: "Tailored to requirements",
+    features: [
+      "Advanced AI agent development",
+      "Multi-channel automation",
+      "Priority support",
+      "Advanced analytics & insights",
+      "3 months support included",
+      "Custom integrations",
+      "Performance optimization",
+      "Training sessions included"
     ],
-    timeline: "6-8 weeks",
-    gradient: "from-blue-600 to-purple-600",
-    popular: true
+    limitations: ["Setup time: 2-4 weeks"],
+    cta: "Most Popular",
+    popular: true,
+    gradient: "from-purple-500 to-pink-500"
   },
   {
-    title: "Predictive Analytics",
-    description: "Harness AI to predict trends, manage risks, and gain insights from your data for proactive decision-making.",
-    icon: LineChart,
-    deliverables: [
-      "Predictive AI models built on your historical data",
-      "Real-time dashboard for analytics and insights",
-      "Training sessions for your team",
-      "Monthly performance reports"
+    name: "Enterprise",
+    icon: Crown,
+    description: "Complete AI transformation for large organizations",
+    price: "Custom",
+    period: "Enterprise agreement",
+    features: [
+      "Full AI ecosystem development",
+      "Dedicated AI research team",
+      "24/7 premium support",
+      "Advanced security features",
+      "6+ months ongoing support",
+      "Custom model training",
+      "White-label solutions",
+      "Dedicated account manager",
+      "SLA guarantees",
+      "On-premise deployment options"
     ],
-    timeline: "5-7 weeks",
-    gradient: "from-pink-600 to-orange-600"
-  },
-  {
-    title: "Workflow Automation",
-    description: "Streamline your repetitive tasks and enhance efficiency with customized workflow automation solutions.",
-    icon: Workflow,
-    deliverables: [
-      "Full workflow audit and process mapping",
-      "Custom automation workflows",
-      "Integration with existing tools",
-      "Performance monitoring dashboard"
-    ],
-    timeline: "3-5 weeks",
-    gradient: "from-purple-600 to-blue-600"
-  },
-  {
-    title: "Custom AI Systems",
-    description: "End-to-end automation of complex operations using cutting-edge AI technology tailored to your needs.",
-    icon: Cpu,
-    deliverables: [
-      "Fully customized AI solutions",
-      "ERP & CRM integration",
-      "Scalable architecture",
-      "24/7 monitoring and support"
-    ],
-    timeline: "6-8 weeks",
-    gradient: "from-orange-600 to-pink-600"
+    limitations: [],
+    cta: "Contact Sales",
+    popular: false,
+    gradient: "from-amber-500 to-orange-500"
   }
 ];
+
 export function PricingTiers() {
   return (
     <section className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-radial opacity-20" />
       <div className="absolute inset-0 grid-overlay opacity-10" />
+      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -83,70 +85,106 @@ export function PricingTiers() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 text-glow">
-            Explore Our Comprehensive<br />AI Service Plans
+          <h2 className="text-4xl font-bold text-white mb-6">
+            Choose Your <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">AI Journey</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Select from a range of productized AI solutions, or request a customized package tailored to your business goals.
+            Every project is unique. Our pricing is tailored to your specific needs, ensuring you get maximum value from your AI investment.
           </p>
         </motion.div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
+
+        <div className="grid lg:grid-cols-3 gap-8">
+          {tiers.map((tier, index) => (
             <motion.div
-              key={service.title}
+              key={tier.name}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="relative group"
+              className={`relative group ${tier.popular ? 'lg:scale-105' : ''}`}
             >
-              <div className={`absolute -inset-1 bg-gradient-to-r ${service.gradient} rounded-2xl opacity-20 group-hover:opacity-30 blur transition-all duration-200`} />
-              <div className="relative flex flex-col justify-between dark-card p-8 rounded-2xl h-full">
-                <div>
-                  {service.popular && (
-                    <div className="absolute -top-4 left-0 right-0 flex justify-center">
-                      <span className={`bg-gradient-to-r ${service.gradient} text-white px-4 py-1 rounded-full text-sm font-medium`}>
-                        Most Popular
-                      </span>
-                    </div>
-                  )}
-                  <div className="flex items-center space-x-4 mb-6">
-                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${service.gradient} p-2.5 flex items-center justify-center`}>
-                      <service.icon className="w-full h-full text-white" />
-                    </div>
-                    <h3 className="text-2xl font-semibold text-white">{service.title}</h3>
+              {tier.popular && (
+                <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl opacity-50 blur animate-pulse" />
+              )}
+              
+              <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-2xl p-8 h-full transition-all duration-300 hover:border-purple-500/50">
+                {tier.popular && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <span className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-2 rounded-full text-sm font-medium">
+                      Most Popular
+                    </span>
                   </div>
-                  <p className="text-gray-400 mb-6">{service.description}</p>
-                  <div className="space-y-4 mb-6">
-                    <h4 className="text-lg font-semibold text-white">Deliverables:</h4>
-                    <ul className="space-y-2">
-                      {service.deliverables.map((item, i) => (
-                        <li key={i} className="text-gray-400 flex items-start">
-                          <span className="text-purple-500 mr-2">•</span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+                )}
+
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className={`p-3 rounded-lg bg-gradient-to-r ${tier.gradient} bg-opacity-20`}>
+                    <tier.icon className="w-6 h-6 text-white" />
                   </div>
+                  <h3 className="text-2xl font-bold text-white">{tier.name}</h3>
                 </div>
-                <div className="flex flex-col">
-                  <div className="space-y-4 mb-8">
-                    <div className="flex justify-between items-center">
-                      <span className="text-gray-400">Timeline</span>
-                      <span className="text-white font-semibold">{service.timeline}</span>
-                    </div>
+
+                <p className="text-gray-400 mb-6">{tier.description}</p>
+
+                <div className="mb-8">
+                  <div className="flex items-baseline space-x-2">
+                    <span className="text-4xl font-bold text-white">{tier.price}</span>
                   </div>
-                  <Link
-                    href="/contact"
-                    className={`w-full flex items-center justify-center px-6 py-3 rounded-xl font-medium transition-all duration-200 bg-gradient-to-r ${service.gradient} text-white hover:shadow-lg hover:scale-105`}
-                  >
-                    Get Started
-                  </Link>
+                  <p className="text-gray-400 text-sm mt-1">{tier.period}</p>
                 </div>
+
+                <div className="space-y-4 mb-8">
+                  {tier.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-start space-x-3">
+                      <Check className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-300">{feature}</span>
+                    </div>
+                  ))}
+
+                  {tier.limitations.map((limitation, limitIndex) => (
+                    <div key={limitIndex} className="flex items-start space-x-3">
+                      <div className="w-5 h-5 border border-gray-500 rounded-full mt-0.5 flex-shrink-0" />
+                      <span className="text-gray-500 text-sm">{limitation}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <Link
+                  href="/contact"
+                  className={`w-full py-3 px-6 rounded-lg font-medium transition-all duration-200 text-center block ${
+                    tier.popular
+                      ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:shadow-lg hover:shadow-purple-500/25'
+                      : 'bg-white/10 text-white border border-white/20 hover:bg-white/20'
+                  }`}
+                >
+                  {tier.cta}
+                </Link>
               </div>
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mt-16"
+        >
+          <div className="bg-gradient-to-r from-purple-500/10 to-blue-500/10 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8">
+            <h3 className="text-2xl font-bold text-white mb-4">
+              Need a Custom Solution?
+            </h3>
+            <p className="text-gray-400 mb-6">
+              Every business is unique. Let's discuss your specific requirements and create a tailored AI solution that fits your budget and goals.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-200"
+            >
+              Schedule Free Consultation
+            </Link>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
