@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from "framer-motion";
@@ -35,7 +34,7 @@ export function ContactHero() {
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0A051E] via-[#120B2E] to-[#1A0B3A]" />
       <div className="absolute inset-0 grid-overlay opacity-20" />
-      
+
       {/* Animated Background Elements */}
       <motion.div
         animate={{
@@ -79,7 +78,7 @@ export function ContactHero() {
               <MessageSquare className="w-4 h-4 text-purple-400" />
               <span className="text-sm font-medium text-white">Get In Touch</span>
             </motion.div>
-            
+
             <h1 className="text-5xl md:text-6xl font-bold mb-8 leading-tight">
               <span className="bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
                 Ready to Transform
@@ -89,7 +88,7 @@ export function ContactHero() {
                 Your Business?
               </span>
             </h1>
-            
+
             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
               Let's discuss how AI can revolutionize your operations. Our experts are ready 
               to provide personalized solutions for your unique challenges.
@@ -146,49 +145,33 @@ export function ContactHero() {
           >
             {contactMethods.map((method, index) => (
               <motion.div
-                key={method.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                whileHover={{ y: -5, scale: 1.02 }}
-                className="group relative"
-              >
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl opacity-0 group-hover:opacity-30 blur transition-all duration-300" />
-                <div className="relative bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-sm border border-purple-500/20 hover:border-purple-400/40 rounded-2xl p-8 transition-all duration-300">
-                  {/* Background Gradient */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${method.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-2xl`} />
-                  
-                  <div className="flex items-center justify-between relative">
-                    <div className="flex items-center gap-4">
-                      <motion.div
-                        whileHover={{ rotate: 10, scale: 1.1 }}
-                        transition={{ duration: 0.3 }}
-                        className={`w-16 h-16 bg-gradient-to-br ${method.gradient} rounded-2xl flex items-center justify-center relative`}
-                      >
-                        <method.icon className="w-8 h-8 text-white" />
-                        <div className={`absolute inset-0 bg-gradient-to-br ${method.gradient} rounded-2xl blur-xl opacity-30`} />
-                      </motion.div>
-                      
-                      <div>
-                        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-200 transition-colors">
-                          {method.title}
-                        </h3>
-                        <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
-                          {method.description}
-                        </p>
-                      </div>
+                  key={method.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  className="group relative cursor-pointer"
+                  onClick={method.onClick}
+                >
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl opacity-0 group-hover:opacity-30 blur transition-all duration-300" />
+                  <div className="relative bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-sm border border-purple-500/20 hover:border-purple-400/40 rounded-2xl p-6 transition-all duration-300">
+                    <div className={`w-12 h-12 bg-gradient-to-br ${method.gradient} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                      <method.icon className="w-6 h-6 text-white" />
                     </div>
-                    
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`bg-gradient-to-r ${method.gradient} text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300`}
-                    >
-                      {method.action}
-                    </motion.button>
+
+                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-purple-200 transition-colors">
+                      {method.title}
+                    </h3>
+
+                    <p className="text-gray-400 text-sm mb-4 group-hover:text-gray-300 transition-colors">
+                      {method.description}
+                    </p>
+
+                    <div className="text-purple-400 text-sm font-medium group-hover:text-purple-300 transition-colors">
+                      {method.action} →
+                    </div>
                   </div>
-                </div>
-              </motion.div>
+                </motion.div>
             ))}
 
             {/* Contact Info */}

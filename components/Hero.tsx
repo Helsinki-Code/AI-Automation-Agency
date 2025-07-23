@@ -151,7 +151,7 @@ export function Hero() {
         >
           <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-3xl opacity-30 blur-xl" />
           <div className="relative aspect-video rounded-2xl overflow-hidden dark-card border border-purple-500/20">
-            <YouTubeVideo videoId="dQw4w9WgXcQ" />
+            <YouTubeVideo videoId="O2gerCxEXvc" />
           </div>
         </motion.div>
 
