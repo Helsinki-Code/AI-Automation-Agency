@@ -1,10 +1,10 @@
-
 "use client";
 
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Code, Brain, Layers, GitBranch, Zap, Shield, CheckCircle, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const developmentServices = [
   {
@@ -54,7 +54,7 @@ export function AIDevelopment() {
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#1A0B3A] to-[#120B2E]" />
       <div className="absolute inset-0 grid-overlay opacity-10" />
-      
+
       {/* Floating Elements */}
       <motion.div
         animate={{
@@ -88,7 +88,7 @@ export function AIDevelopment() {
             <Code className="w-4 h-4 text-purple-400" />
             <span className="text-sm font-medium text-white">Custom AI Development</span>
           </motion.div>
-          
+
           <h2 className="text-5xl md:text-6xl font-bold mb-6">
             <span className="bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
               Build Intelligent Solutions
@@ -120,7 +120,7 @@ export function AIDevelopment() {
                 <CardContent className="p-8 relative">
                   {/* Background Gradient */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
-                  
+
                   {/* Header */}
                   <div className="flex items-center gap-4 mb-6">
                     <motion.div
@@ -161,6 +161,16 @@ export function AIDevelopment() {
                         </span>
                       </motion.div>
                     ))}
+                  </div>
+
+                  {/* CTA Button */}
+                  <div className="mt-8">
+                    <Link href="/services/custom-development">
+                      <Button className="group bg-gradient-to-r from-white/10 to-white/5 hover:from-white/20 hover:to-white/10 text-white border border-white/20 hover:border-white/30 transition-all duration-300">
+                        View Our Work
+                        <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+                      </Button>
+                    </Link>
                   </div>
 
                   {/* Hover Line */}
@@ -247,7 +257,7 @@ export function AIDevelopment() {
                 </div>
                 <h4 className="text-xl font-bold text-white mb-3">{phase.title}</h4>
                 <p className="text-gray-400">{phase.description}</p>
-                
+
                 {/* Connecting Line */}
                 {index < 3 && (
                   <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-purple-600/50 to-transparent" />

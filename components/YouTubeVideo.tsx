@@ -50,14 +50,14 @@ export function YouTubeVideo({ videoId }: YouTubeVideoProps) {
       playerRef.current = new window.YT.Player('youtube-player', {
         videoId,
         playerVars: {
-          autoplay: 1,
+          autoplay: 0,
           loop: 1,
-          controls: 0,
+          controls: 1,
           showinfo: 0,
           rel: 0,
           enablejsapi: 1,
           modestbranding: 1,
-          mute: 1,
+          mute: 0,
           playlist: videoId
         },
         events: {

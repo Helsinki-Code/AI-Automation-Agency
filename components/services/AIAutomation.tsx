@@ -9,6 +9,8 @@ import {
   Building,
   Users,
 } from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const services = [
   {
@@ -58,7 +60,12 @@ export function AIAutomation() {
             >
               <service.icon className="w-12 h-12 text-purple-400 mb-4" />
               <h3 className="text-2xl font-bold text-white mb-2">{service.title}</h3>
-              <p className="text-gray-400">{service.description}</p>
+              <p className="text-gray-400 mb-4">{service.description}</p>
+              <Link href="/services/ai-automation">
+                <Button className="mt-4 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white">
+                  View Our Work
+                </Button>
+              </Link>
             </motion.div>
           ))}
         </div>

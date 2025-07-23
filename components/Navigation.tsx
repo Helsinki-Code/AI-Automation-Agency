@@ -47,16 +47,27 @@ export function Navigation() {
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-3 group">
               <div className="relative">
-                <div className="w-10 h-10 bg-gradient-to-br from-purple-500 via-blue-500 to-pink-500 rounded-xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-200">
-                  <Sparkles className="w-5 h-5 text-white" />
+                <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center transform group-hover:scale-110 transition-transform duration-200 overflow-hidden">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="navLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style={{stopColor:"#E879F9"}} />
+                        <stop offset="50%" style={{stopColor:"#8B5CF6"}} />
+                        <stop offset="100%" style={{stopColor:"#3B82F6"}} />
+                      </linearGradient>
+                    </defs>
+                    <g transform="translate(12, 12)">
+                      <path d="M-6 3 L0 -8 L6 3 L3 3 L0 -3 L-3 3 Z" fill="url(#navLogoGradient)" />
+                    </g>
+                  </svg>
                 </div>
-                <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl opacity-30 blur group-hover:opacity-50 transition-opacity duration-200" />
+                <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg opacity-30 blur group-hover:opacity-50 transition-opacity duration-200" />
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                <span className="text-xl font-bold bg-gradient-to-r from-purple-400 via-purple-300 to-blue-400 bg-clip-text text-transparent tracking-tight">
                   Agentic AI AMRO
                 </span>
-                <span className="text-xs text-purple-400 font-medium">Ltd</span>
+                <span className="text-xs text-purple-400 font-semibold tracking-wide">Ltd</span>
               </div>
             </Link>
 

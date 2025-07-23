@@ -26,6 +26,9 @@ const resources = [
   { href: "/use-cases", label: "Use Cases" },
 ];
 
+// Assuming Newsletter component is defined elsewhere, import it
+import Newsletter from "@/components/Newsletter";
+
 export function Footer() {
   return (
     <footer className="relative bg-gradient-to-b from-[#0A051E] via-[#120B2E] to-black overflow-hidden">
@@ -59,6 +62,11 @@ export function Footer() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Newsletter Section */}
+        <div className="relative mb-16">
+          <Newsletter />
+        </div>
+
         {/* Main Footer Content */}
         <div className="py-16">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
