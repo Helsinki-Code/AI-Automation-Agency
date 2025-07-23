@@ -4,6 +4,7 @@ import { Mail, Phone, Linkedin, Twitter, Instagram, ArrowRight, Sparkles, MapPin
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { companyInfo } from "@/app/metadata";
+import Newsletter from "@/components/Newsletter";
 
 const quickLinks = [
   { href: "/about", label: "About Us" },
@@ -191,7 +192,7 @@ export function Footer() {
           </div>
         </div>
 
-        
+
 
         {/* Bottom Section */}
         <motion.div
