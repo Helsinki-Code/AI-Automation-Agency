@@ -1,3 +1,4 @@
+
 import { ServicesHero } from "@/components/services/ServicesHero";
 import { AIDevelopment } from "@/components/services/AIDevelopment";
 import { AIAutomation } from "@/components/services/AIAutomation";
@@ -6,12 +7,12 @@ import { ServicesCTA } from "@/components/services/ServicesCTA";
 
 export default function ServicesPage() {
   return (
-    <main className="flex-1">
+    <div className="overflow-hidden">
       <ServicesHero />
       <AIDevelopment />
       <AIAutomation />
       <WhyChooseUs />
       <ServicesCTA />
-    </main>
+    </div>
   );
 }

@@ -1,74 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { Providers } from "@/components/Providers";
-import { Toaster } from "sonner";
-import { siteMetadata } from './metadata';
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteMetadata.siteUrl),
-  title: {
-    default: siteMetadata.title,
-    template: `%s | ${siteMetadata.title}`,
-  },
-  description: siteMetadata.description,
-  keywords: siteMetadata.keywords,
-  icons: {
-    icon: [
-      {
-        url: '/favicon.ico',
-        sizes: 'any',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-      {
-        url: '/apple-touch-icon.png',
-        type: 'image/png',
-        sizes: '180x180',
-      },
-    ],
-    apple: [
-      {
-        url: '/apple-touch-icon.png',
-        sizes: '180x180',
-        type: 'image/png',
-      },
-    ],
-  },
-  manifest: '/site.webmanifest',
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  verification: {
-    google: 'a-vNCDRU-linGxiw9FQbHKS_R2pdC4mp4qY7jsu9slo',
-  },
+  title: "AI Automation Agency | Empowering Businesses with AI & Automation",
+  description: "Transform your business with cutting-edge AI automation solutions. We help companies implement intelligent workflows, reduce costs, and boost productivity.",
+  keywords: ["AI automation", "artificial intelligence", "business automation", "AI agents", "machine learning"],
+  authors: [{ name: "AI Automation Agency" }],
   openGraph: {
-    title: siteMetadata.title,
-    description: siteMetadata.description,
-    url: siteMetadata.siteUrl,
-    siteName: siteMetadata.title,
-    locale: 'en_US',
-    type: 'website',
+    title: "AI Automation Agency | Empowering Businesses with AI & Automation",
+    description: "Transform your business with cutting-edge AI automation solutions.",
+    images: ["/AI Automation Agency.png"],
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: siteMetadata.title,
-    description: siteMetadata.description,
-  }
 };
 
 export default function RootLayout({
@@ -77,14 +22,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <head />
-      <body>
+    <html lang="en" className="dark">
+      <body className="min-h-screen bg-background font-sans antialiased">
         <Providers>
           <Navigation />
-          {children}
+          <main className="relative">
+            {children}
+          </main>
           <Footer />
-          <Toaster position="top-right" />
         </Providers>
       </body>
     </html>

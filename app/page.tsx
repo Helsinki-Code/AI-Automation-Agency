@@ -1,17 +1,26 @@
+
 import { Hero } from "@/components/Hero";
-import { Intro } from "@/components/Intro";
-import { Workflow } from "@/components/Workflow";
+import { Features } from "@/components/Features";
+import { AIAgents } from "@/components/AIAgents";
+import { Solutions } from "@/components/Solutions";
+import { Process } from "@/components/Process";
+import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { UseCases } from "@/components/UseCases";
 import { Testimonials } from "@/components/Testimonials";
+import { GetStarted } from "@/components/GetStarted";
 
 export default function Home() {
   return (
-    <main className="flex-1">
+    <div className="overflow-hidden">
       <Hero />
-      <Intro />
-      <Workflow />
+      <Features />
+      <AIAgents />
+      <Solutions />
+      <Process />
+      <WhyChooseUs />
       <UseCases />
       <Testimonials />
-    </main>
+      <GetStarted />
+    </div>
   );
 }

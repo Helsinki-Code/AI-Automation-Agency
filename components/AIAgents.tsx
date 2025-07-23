@@ -1,225 +1,294 @@
+
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { 
-  MessageSquare, 
-  TrendingUp, 
-  Database, 
-  Cog, 
-  Cpu,
-  ArrowRight,
-  Play
-} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Brain, MessageSquare, BarChart3, Shield, Zap, Users, ArrowRight, CheckCircle } from "lucide-react";
 import Link from "next/link";
 
 const agents = [
   {
-    title: "Customer Support Agents",
-    description: "Provide 24/7 support with AI agents that respond instantly, resolve queries, and enhance user satisfaction.",
     icon: MessageSquare,
-    stat: "60% faster response times",
-    demo: "/demos/support-agent.mp4"
+    title: "Customer Service Agent",
+    description: "24/7 intelligent customer support with natural language processing and sentiment analysis.",
+    features: ["Multi-language support", "Sentiment analysis", "Ticket routing", "Knowledge base integration"],
+    gradient: "from-blue-500 to-cyan-500",
+    delay: 0.1,
   },
   {
-    title: "Sales Assistants",
-    description: "Boost your sales with AI-driven assistants that personalize recommendations and automate follow-ups.",
-    icon: TrendingUp,
-    stat: "35% increase in conversion rates",
-    demo: "/demos/sales-agent.mp4"
+    icon: BarChart3,
+    title: "Analytics Agent",
+    description: "Real-time data analysis and predictive insights to drive business decisions.",
+    features: ["Predictive analytics", "Real-time dashboards", "Anomaly detection", "Automated reporting"],
+    gradient: "from-green-500 to-emerald-500",
+    delay: 0.2,
   },
   {
-    title: "Data Analysts",
-    description: "Turn raw data into actionable insights with AI agents that identify trends, predict outcomes, and support decision-making.",
-    icon: Database,
-    stat: "90% accuracy in predictions",
-    demo: "/demos/analyst-agent.mp4"
+    icon: Shield,
+    title: "Security Agent",
+    description: "Proactive threat detection and automated security response systems.",
+    features: ["Threat detection", "Automated response", "Compliance monitoring", "Risk assessment"],
+    gradient: "from-red-500 to-orange-500",
+    delay: 0.3,
   },
   {
-    title: "Task Automation Specialists",
-    description: "Free your team from repetitive tasks by deploying AI agents to handle everything from data entry to scheduling.",
-    icon: Cog,
-    stat: "Save 40+ hours per week",
-    demo: "/demos/automation-agent.mp4"
+    icon: Brain,
+    title: "Decision Agent",
+    description: "Complex decision-making with machine learning and business rule engines.",
+    features: ["Rule-based decisions", "ML recommendations", "Workflow automation", "Process optimization"],
+    gradient: "from-purple-500 to-pink-500",
+    delay: 0.4,
   },
-  {
-    title: "Custom-Built Agents",
-    description: "Need something unique? We create AI agents specifically tailored to your business requirements.",
-    icon: Cpu,
-    stat: "100% customizable solutions",
-    demo: "/demos/custom-agent.mp4"
-  }
+];
+
+const benefits = [
+  "Reduce operational costs by up to 60%",
+  "Increase productivity by 300%",
+  "24/7 autonomous operations",
+  "Seamless human-AI collaboration",
+  "Scalable across departments",
+  "Enterprise-grade security",
 ];
 
 export function AIAgents() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [activeDemo, setActiveDemo] = useState<string | null>(null);
-
   return (
-    <section className="py-24 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 to-purple-900/20" />
+    <section className="py-32 relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#1A0B3A] to-[#0A051E]" />
       <div className="absolute inset-0 grid-overlay opacity-10" />
       
-      {/* Floating Elements */}
-      <div className="absolute top-20 -left-20 w-72 h-72 bg-purple-600/30 rounded-full filter blur-[128px] pointer-events-none" />
-      <div className="absolute bottom-20 -right-20 w-72 h-72 bg-pink-600/30 rounded-full filter blur-[128px] pointer-events-none" />
+      {/* Animated Background Elements */}
+      <motion.div
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.1, 0.3],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded-full filter blur-3xl"
+      />
       
-      {/* Neural Network Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <svg className="w-full h-full" viewBox="0 0 800 800">
-          <pattern id="neural-net-agents" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
-            <circle cx="25" cy="25" r="1" fill="currentColor" />
-            <line x1="25" y1="25" x2="50" y2="25" stroke="currentColor" strokeWidth="0.5" />
-            <line x1="25" y1="25" x2="25" y2="50" stroke="currentColor" strokeWidth="0.5" />
-          </pattern>
-          <rect x="0" y="0" width="100%" height="100%" fill="url(#neural-net-agents)" />
-        </svg>
-      </div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Hero Section */}
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Empower Your Business with
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600/20 to-blue-600/20 backdrop-blur-sm border border-purple-500/30 rounded-full px-6 py-3 mb-8"
+          >
+            <Brain className="w-4 h-4 text-purple-400" />
+            <span className="text-sm font-medium text-white">Intelligent Automation</span>
+          </motion.div>
+          
+          <h2 className="text-5xl md:text-6xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
+              Empower Your Business with
+            </span>
             <br />
-            Intelligent AI Agents
+            <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+              Intelligent AI Agents
+            </span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
             Revolutionize the way you work with AI agents tailored to your business needs. 
             Automate tasks, enhance customer experiences, and make smarter decisions faster.
           </p>
         </motion.div>
 
-        {/* Rest of the component remains the same */}
-        {/* Interactive Demo Section */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-24">
-          {/* Left Side - Video Demo */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative aspect-video"
-          >
-            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl opacity-20 blur-xl" />
-            <div className="relative dark-card rounded-2xl overflow-hidden h-full">
-              {activeDemo ? (
-                <video
-                  src={activeDemo}
-                  autoPlay
-                  loop
-                  muted
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <div className="flex items-center justify-center h-full">
-                  <Play className="w-16 h-16 text-gray-600" />
-                </div>
-              )}
-            </div>
-          </motion.div>
-
-          {/* Right Side - Description */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative"
-          >
-            <div className="dark-card rounded-2xl p-8 md:p-12">
-              <h3 className="text-3xl font-bold text-white mb-6">
-                AI Agents Designed to Work Smarter for You
-              </h3>
-              <p className="text-gray-400 text-lg mb-8">
-                From streamlining workflows to delivering personalized customer interactions, 
-                our AI agents are designed to act as an extension of your team—efficient, 
-                reliable, and always learning.
-              </p>
-              <button className="group flex items-center space-x-2 text-white bg-gradient-to-r from-purple-600 to-pink-600 rounded-full px-6 py-3 hover:shadow-lg transition-all duration-200 hover:scale-105">
-                <span>Request a Demo</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Agent Cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+        {/* Agents Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
           {agents.map((agent, index) => (
             <motion.div
               key={agent.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative"
-              onMouseEnter={() => {
-                setHoveredIndex(index);
-                setActiveDemo(agent.demo);
-              }}
-              onMouseLeave={() => {
-                setHoveredIndex(null);
-                setActiveDemo(null);
-              }}
+              transition={{ duration: 0.6, delay: agent.delay }}
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="group"
             >
-              <div className="relative group">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-300 blur-sm" />
-                <div className="relative dark-card rounded-2xl p-8 h-full transition-all duration-300 group-hover:translate-y-[-2px]">
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="p-3 bg-purple-600/10 rounded-xl">
-                      <agent.icon className="w-8 h-8 text-purple-600" />
+              <Card className="h-full bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-sm border border-purple-500/20 hover:border-purple-400/40 transition-all duration-300 overflow-hidden">
+                <CardContent className="p-8 relative">
+                  {/* Background Gradient */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${agent.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
+                  
+                  {/* Header */}
+                  <div className="flex items-center gap-4 mb-6">
+                    <motion.div
+                      whileHover={{ rotate: 10, scale: 1.1 }}
+                      transition={{ duration: 0.3 }}
+                      className={`w-16 h-16 bg-gradient-to-br ${agent.gradient} rounded-2xl flex items-center justify-center relative`}
+                    >
+                      <agent.icon className="w-8 h-8 text-white" />
+                      <div className={`absolute inset-0 bg-gradient-to-br ${agent.gradient} rounded-2xl blur-xl opacity-30`} />
+                    </motion.div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-purple-200 transition-colors">
+                        {agent.title}
+                      </h3>
                     </div>
-                    {hoveredIndex === index && (
-                      <motion.span
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-sm text-purple-500 font-medium"
-                      >
-                        {agent.stat}
-                      </motion.span>
-                    )}
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-4">
-                    {agent.title}
-                  </h3>
-                  <p className="text-gray-400">
+
+                  {/* Description */}
+                  <p className="text-gray-400 mb-6 leading-relaxed group-hover:text-gray-300 transition-colors">
                     {agent.description}
                   </p>
-                </div>
-              </div>
+
+                  {/* Features */}
+                  <div className="space-y-3">
+                    <h4 className="text-white font-semibold mb-3">Key Features:</h4>
+                    {agent.features.map((feature, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: agent.delay + i * 0.1 }}
+                        className="flex items-center gap-3"
+                      >
+                        <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                        <span className="text-gray-400 group-hover:text-gray-300 transition-colors">
+                          {feature}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  {/* Hover Line */}
+                  <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${agent.gradient} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300`} />
+                </CardContent>
+              </Card>
             </motion.div>
           ))}
         </div>
 
-        {/* CTA Section */}
+        {/* Benefits Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
+          className="bg-gradient-to-r from-purple-600/10 to-blue-600/10 backdrop-blur-sm border border-purple-500/20 rounded-3xl p-12 mb-16"
+        >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 className="text-3xl font-bold text-white mb-6">
+                Transform Your Business Operations
+              </h3>
+              <p className="text-gray-300 text-lg mb-8 leading-relaxed">
+                Our AI agents work seamlessly together to create a comprehensive automation ecosystem 
+                that adapts to your specific business needs and scales with your growth.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {benefits.map((benefit, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    className="flex items-center gap-3"
+                  >
+                    <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" />
+                    <span className="text-gray-300">{benefit}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative"
+            >
+              {/* Interactive Agent Network Visualization */}
+              <div className="relative w-full h-80">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-2xl backdrop-blur-sm border border-purple-500/30">
+                  {/* Central Hub */}
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center"
+                  >
+                    <Brain className="w-8 h-8 text-white" />
+                  </motion.div>
+                  
+                  {/* Orbiting Agents */}
+                  {agents.map((agent, index) => (
+                    <motion.div
+                      key={index}
+                      animate={{ 
+                        rotate: 360,
+                        x: [0, 40, 0, -40, 0],
+                        y: [0, -30, 0, 30, 0],
+                      }}
+                      transition={{ 
+                        duration: 15 + index * 2, 
+                        repeat: Infinity, 
+                        ease: "linear",
+                        delay: index * 0.5,
+                      }}
+                      className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-gradient-to-br ${agent.gradient} rounded-full flex items-center justify-center`}
+                      style={{
+                        transform: `translate(-50%, -50%) rotate(${index * 90}deg) translateY(-80px) rotate(-${index * 90}deg)`,
+                      }}
+                    >
+                      <agent.icon className="w-6 h-6 text-white" />
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <h3 className="text-3xl font-bold text-white mb-8">
-            Discover the AI Agent That Can Transform Your Business
+          <h3 className="text-3xl font-bold text-white mb-6">
+            Ready to Deploy Your AI Agent Team?
           </h3>
-          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <Link
-              href="/contact"
-              className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-semibold hover:shadow-lg transition-all duration-200 hover:scale-105"
-            >
-              Schedule a Free Consultation
+          <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+            Start with a free consultation to discover how our AI agents can transform your specific business processes.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contact">
+              <Button
+                size="lg"
+                className="group bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-xl hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105"
+              >
+                Start Free Consultation
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
             </Link>
-            <button className="px-8 py-4 bg-white/10 text-white rounded-full font-semibold hover:bg-white/20 transition-all duration-200">
-              See How It Works
-            </button>
+            <Link href="/case-studies">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-purple-500/50 hover:border-purple-400 bg-transparent text-white px-8 py-4 rounded-full text-lg font-semibold backdrop-blur-sm hover:bg-purple-600/10 transition-all duration-300"
+              >
+                View Case Studies
+              </Button>
+            </Link>
           </div>
         </motion.div>
       </div>
