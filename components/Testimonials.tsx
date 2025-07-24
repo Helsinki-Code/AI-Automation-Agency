@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const testimonials = [
@@ -73,9 +74,11 @@ export function Testimonials() {
                     </p>
                   </div>
                   <div className="flex items-center">
-                    <img
+                    <Image
                       src={testimonial.image}
                       alt={testimonial.name}
+                      width={64}
+                      height={64}
                       className="w-16 h-16 rounded-full mr-4"
                     />
                     <div>

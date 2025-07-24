@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Providers } from "@/components/Providers";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ai-automation-agency-i1xesvzzb-vikram-689rcoms-projects.vercel.app"),
   title: "Agentic AI AMRO Ltd | Empowering Businesses with AI & Automation",
   description: "Transform your business with cutting-edge AI automation solutions. We help companies implement intelligent workflows, reduce costs, and boost productivity.",
   keywords: ["AI automation", "artificial intelligence", "business automation", "AI agents", "machine learning"],
