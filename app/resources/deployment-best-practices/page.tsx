@@ -1,99 +1,201 @@
-import React from 'react';
 
-const DeploymentBestPracticesPage = () => {
-  return (
-    <div className="prose prose-invert max-w-4xl mx-auto py-12 px-4">
-      <h1>Enterprise-Grade Production Deployment Best Practices for AI Applications</h1>
-      <p>The deployment of AI applications in production environments represents one of the most complex challenges in modern software engineering, requiring sophisticated orchestration of infrastructure, security, and operational practices. Based on comprehensive analysis of current industry practices and emerging technologies, organizations implementing robust deployment frameworks can achieve 65% higher success rates in production deployments while reducing operational overhead by 41%[1]. This guide synthesizes enterprise-grade deployment strategies that address the unique challenges of AI workloads, from container orchestration and CI/CD pipeline optimization to security hardening and disaster recovery planning. The practices outlined here demonstrate measurable benefits including 37% reduction in deployment incidents, 42% improvement in model reliability, and significant cost optimization through automated resource management and scaling strategies.</p>
+import { Metadata } from "next";
+import Link from "next/link";
+import { ArrowLeft, Download, Rocket, Shield, Monitor, GitBranch } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
-      <h2>Pre-Production Planning and Requirements</h2>
-      <h3>Comprehensive Checklist Framework</h3>
-      <p>Successful enterprise deployments begin with meticulous pre-production planning that encompasses infrastructure, security, and operational readiness. The deployment checklist serves as a critical framework ensuring no essential component is overlooked during the transition to production[2][3]. Organizations must establish clear criteria for production readiness, including technical validation, security assessments, and business continuity planning.</p>
-      <p>The production deployment checklist reveals that infrastructure setup and security compliance represent the highest priority areas, with each category containing multiple critical items requiring specialized expertise[3]. Platform engineers must ensure container orchestration clusters are properly configured, load balancers are deployed with appropriate failover mechanisms, and SSL/TLS certificates are installed following industry standards[2]. Security engineers focus on implementing robust authentication and authorization mechanisms, configuring network security groups, and establishing secrets management systems that protect sensitive data throughout the deployment lifecycle.</p>
-
-      <h3>Stakeholder Coordination and Team Alignment</h3>
-      <p>Effective deployment requires seamless coordination between development, operations, security, and compliance teams, each bringing unique perspectives and requirements to the production deployment process[2][4]. Development teams must ensure code quality meets production standards, while operations teams focus on infrastructure reliability and monitoring capabilities. Security teams implement hardening measures and vulnerability assessments, while compliance teams verify adherence to regulatory requirements and audit standards.</p>
-      <p>Communication protocols become critical during deployment phases, with teams requiring clear escalation paths and incident response procedures[4]. Regular deployment reviews and post-implementation retrospectives help organizations refine their processes and identify areas for improvement. Documentation of deployment procedures, rollback plans, and troubleshooting guides ensures knowledge transfer and reduces dependency on individual team members.</p>
-
-      <h2>Infrastructure Architecture and Container Orchestration</h2>
-      <h3>Modern Container Orchestration with Kubernetes</h3>
-      <p>Container orchestration has emerged as the foundation of scalable enterprise deployments, with Kubernetes becoming the de facto standard for managing containerized applications at scale[5][6][7]. Kubernetes provides dynamic services for running, connecting, scaling, and managing complex multi-container workloads through automated lifecycle management[7]. Organizations leverage Kubernetes to achieve scalability, portability, resilience, and better resource utilization in their applications, with the CNCF Report 2022 confirming broad adoption across global enterprises[5].</p>
-      <p>The infrastructure architecture for AI agent deployment requires multiple layers of abstraction, from load balancing and API gateways to compute resources and data storage systems. Container orchestration automates the lifecycle management of containers across large, dynamic environments, including provisioning, deployment, networking, scaling, availability, and health monitoring[5][6]. This automation enables organizations to run and scale applications in different environments quickly while maintaining consistency and reliability.</p>
-      <p>Kubernetes orchestration provides sophisticated scheduling capabilities that optimize resource utilization by automatically placing containers on appropriate nodes based on resource constraints such as CPU, memory, and storage requirements[6]. The master node with control plane manages the orchestration solution, while worker nodes execute containerized applications according to declarative configuration files written in YAML or JSON[6]. This architecture enables automatic discovery of new telemetry sources and dynamic adaptation to changing application requirements.</p>
-
-      <h3>Infrastructure as Code and Environment Consistency</h3>
-      <p>Infrastructure as Code (IaC) practices using tools like Terraform ensure consistent environments across development, staging, and production phases[8]. IaC enables version control of infrastructure configurations, automated provisioning of resources, and rollback capabilities when issues arise. Organizations adopting IaC practices report significant improvements in deployment consistency and reduced configuration drift between environments.</p>
-      <p>Cloud-native solutions provide elastic scalability and automated resource management, enabling applications to adapt to varying workloads without manual intervention[9][10]. Spring Boot integration with cloud services demonstrates how applications can leverage Infrastructure as a Service (IaaS), Platform as a Service (PaaS), and Software as a Service (SaaS) models to achieve excellent performance and continuous availability[9]. This approach reduces infrastructure management overhead while providing access to advanced services and capabilities.</p>
-
-      <h2>CI/CD Pipeline Implementation for AI Applications</h2>
-      <h3>Specialized Pipeline Architecture for AI Workloads</h3>
-      <p>AI applications present unique challenges that traditional CI/CD pipelines struggle to address, particularly in model versioning, data quality management, and system integration[1]. Specialized pipeline architectures incorporating automated testing, intelligent resource allocation, and continuous monitoring have proven essential for successful AI deployments[1]. These pipelines must handle the complexity of machine learning workflows, from data ingestion and model training to testing, deployment, and monitoring[11].</p>
-      <p>The CI/CD pipeline for AI applications requires sophisticated orchestration of multiple components including data validation, model training, testing frameworks, and deployment strategies[1][12]. Organizations implementing these practices achieve measurable improvements in build success rates, deployment speeds, and overall operational efficiency[13]. Modern pipelines leverage tools like Jenkins, GitHub Actions, GitLab CI, and specialized platforms that provide deeper integration with cloud providers and support infrastructure-as-code workflows[2][8].</p>
-      <p>Automated testing in AI pipelines extends beyond traditional unit and integration testing to include model validation, data quality checks, and performance benchmarking[11][1]. Model versioning and governance require centralized registries that enforce access controls and ensure compliance with regulatory requirements[11]. Continuous monitoring throughout the pipeline enables early detection of issues and automated rollback when performance thresholds are not met.</p>
-
-      <h3>Advanced Deployment Strategies</h3>
-      <p>Modern deployment strategies incorporate sophisticated techniques like blue-green deployments, canary releases, and feature flags to minimize risk and enable rapid rollback when issues arise[2][14]. Blue-green deployment involves running two identical environments, allowing traffic switching between versions with minimal downtime[2]. Canary releases gradually roll out changes to a small subset of users, enabling early issue detection before full deployment[2].</p>
-      <p>GitOps integration provides a paradigm-shifting strategy that uses Git as the single source of truth for infrastructure and application code[15]. Teams can improve security and reliability while accelerating deployment times by leveraging DevOps best practices and automation[15]. This approach enables more automated, straightforward deployment techniques while maintaining strict version control and audit trails.</p>
-      <p>Feature flags allow developers to enable or disable specific features without redeploying code, minimizing the risk of full rollback by allowing teams to deactivate problematic features while keeping other updates live[2]. This strategy provides controlled testing of new functionality and reduces the impact of unexpected failures during production deployment.</p>
-
-      <h2>Environment Management and Security</h2>
-      <h3>Multi-Environment Strategy and Isolation</h3>
-      <p>Enterprise deployment strategies require careful management of development, quality assurance, and production environments with appropriate levels of isolation and security[16][17]. Preproduction deploys create integration testing environments side by side with production deploys, ensuring that components work precisely as expected before full deployment[16]. This approach scales well with organization size and provides more effective integration testing aligned with agile business practices[16].</p>
-      <p>Environment segregation using dedicated cloud accounts and VPCs with granular network controls provides strict isolation between development, QA, and production systems[17]. Zero Trust governance through continuous authentication, just-in-time access, and least privilege principles eliminates implicit trust within internal networks[17]. This framework incorporates threat-informed defense by applying MITRE ATT&CK tactics to harden CI/CD pipelines and ephemeral testing resources[17].</p>
-
-      <h3>Security Hardening and Vulnerability Assessment</h3>
-      <p>Production security hardening requires systematic configuration tuning with an assume-breach and defense-in-depth mentality[18][19]. The goal is making it difficult for attackers to gain control of systems without altering the intended utility of workloads or operations[19]. Security hardening focuses on reducing attack surface, eliminating easy targets, and fine-tuning configurations to force attackers to use advanced or untested methods[19].</p>
-      <p>Baseline security recommendations include running services with unprivileged accounts, allowing minimal write privileges, using end-to-end TLS, disabling swap to prevent sensitive data paging, and disabling core dumps that could expose sensitive information[18]. Extended recommendations involve implementing privileged access workstations (PAWs) for management operations and regularly reviewing logs for potential breaches[18][19].</p>
-      <p>Vulnerability scanning must be integrated throughout the CI/CD pipeline, with automated security scans occurring at multiple stages of the deployment process[20][1]. Python-driven security automation frameworks demonstrate significant improvements in vulnerability detection, remediation time, and compliance achievement through comprehensive monitoring systems[20]. Organizations implementing automated security controls report substantial reductions in error rates and improved operational efficiency while decreasing resource requirements[20].</p>
-
-      <h2>Monitoring, Observability, and Performance Optimization</h2>
-      <h3>Comprehensive Observability Framework</h3>
-      <p>Modern observability practices extend far beyond traditional monitoring by providing holistic visibility into system behavior and performance[21][22][23]. Observability enables understanding of system internal states from knowledge of external outputs, making it possible to discover, triage, and resolve issues that threaten uptime and reliability[23]. This approach aggregates all data produced by IT systems to generate real-time insights, identify anomalies, determine root causes, and proactively resolve problems[23].</p>
-      <p>The three pillars of observability—metrics, logs, and traces—provide comprehensive insight into system behavior[21][22]. Metrics offer numerical values measured at specific points in time, providing quantitative data for analysis and alerting[21]. Events capture richer contextual information with multiple parameters, while logs provide detailed records of system operations and tasks[21]. Distributed tracing enables correlation of requests across multiple services, providing visibility into complex microservices architectures[22].</p>
-      <p>Observability platforms integrate data from multiple sources to provide centralized analysis and visualization capabilities[21][22]. These platforms enable engineers to ask critical questions and explore applications and infrastructure dynamically, gaining deeper insights that drive informed decision-making[21]. The result is significant improvements in system performance, reliability, and operational efficiency through proactive issue identification and resolution.</p>
-
-      <h3>AI-Powered Monitoring and Diagnostics</h3>
-      <p>Recent advancements in artificial intelligence have introduced innovative approaches to monitoring and diagnostics within deployment workflows, significantly enhancing efficiency, reliability, and resilience[13][24][25]. AI methodologies including machine learning algorithms, anomaly detection systems, and predictive analytics are transforming pipeline management by identifying potential bottlenecks, predicting build failures, and optimizing resource allocation[13][24].</p>
-      <p>AI-driven log analysis automates error pattern detection and root cause identification, while reinforcement learning models adaptively manage pipeline configurations to minimize failure rates[13]. Natural language processing analyzes developer feedback and improves communication across teams, enhancing collaboration and reducing time to resolution[13]. Organizations implementing AI-powered observability report measurable improvements in build success rates, deployment speeds, and overall operational efficiency[13].</p>
-      <p>Machine learning-enabled chaos engineering helps maintain system reliability during deployments, while predictive analytics inform developers about potential issues before they impact production systems[25]. These technologies enable companies to achieve considerable advancements in application development by automating repetitive tasks and providing intelligent insights into system behavior[25].</p>
-
-      <h2>Disaster Recovery and Scaling Strategies</h2>
-      <h3>Comprehensive Backup and Recovery Framework</h3>
-      <p>Enterprise backup and disaster recovery strategies involve creating and maintaining multiple copies of critical data in geographically distributed locations to protect against various failure scenarios[26][27]. Full backups create complete duplicates of all data, while incremental backups capture only changes since the last backup, optimizing storage utilization and backup windows[28][27]. Differential backups capture changes since the last full backup, providing a balance between recovery time and storage requirements[28][27].</p>
-      <p>Cloud-based backup and disaster recovery solutions provide scalability, geographic separation, and reduced capital investment compared to on-premises alternatives[26]. Hybrid approaches retain some backup processes on-premises for rapid recovery while leveraging cloud resources for geographic distribution and long-term retention[26]. Continuous replication minimizes data loss by maintaining real-time copies of critical systems in remote locations[26].</p>
-      <p>Disaster recovery planning must address recovery time objectives (RTO) and recovery point objectives (RPO) to meet business continuity requirements[26]. Organizations require documented procedures for data restoration, system recovery, and business process resumption following various disaster scenarios[26]. Regular testing of backup and recovery procedures ensures systems function as expected when needed, identifying potential issues before actual disasters occur[26].</p>
-
-      <h3>Horizontal and Vertical Scaling Strategies</h3>
-      <p>Scaling strategies must address both immediate performance requirements and long-term growth projections through careful evaluation of horizontal and vertical scaling approaches[29][30][31]. Horizontal scaling distributes workloads across multiple instances or nodes, providing improved fault tolerance and the ability to handle larger user bases[29]. Vertical scaling increases resources within existing systems, offering simplicity in management but with limitations in maximum capacity[29].</p>
-      <p>AI infrastructure requires specialized scaling approaches that accommodate the unique computational demands of machine learning workloads[30][31][32]. Graphics Processing Units (GPUs) and Tensor Processing Units (TPUs) provide parallel processing capabilities essential for AI tasks, requiring careful resource allocation and scheduling[30][32]. Scalable storage and networking solutions must handle enormous data volumes intrinsic to AI applications while maintaining high performance[31].</p>
-      <p>Container orchestration platforms like Kubernetes provide automated scaling capabilities based on resource utilization metrics and application demand[5][7]. Horizontal Pod Autoscaling (HPA) and Vertical Pod Autoscaling (VPA) enable dynamic resource adjustment without manual intervention[5]. These capabilities ensure optimal resource utilization while maintaining application performance during varying workload conditions.</p>
-
-      <h2>Database Optimization and API Management</h2>
-      <h3>Database Performance for Agent Workflows</h3>
-      <p>Database optimization for AI agent workflows requires careful consideration of data access patterns, query performance, and storage efficiency[33][34]. Enterprise databases must handle both transactional workloads from agent operations and analytical queries for monitoring and reporting purposes[33]. Optimization strategies include proper indexing, query tuning, connection pooling, and caching mechanisms to ensure responsive performance under varying loads.</p>
-      <p>Database upgrade strategies must minimize downtime while ensuring data integrity and compatibility with existing applications[33]. Organizations require comprehensive testing procedures to validate performance improvements and identify potential issues before production deployment[33]. Backup and recovery procedures become critical during database upgrades, requiring point-in-time recovery capabilities and rollback procedures when issues arise.</p>
-
-      <h3>API Gateway Configuration and Rate Limiting</h3>
-      <p>API gateway configuration provides centralized management of API traffic, security policies, and rate limiting to protect backend systems from overload[9][14]. Load balancing distributes requests across multiple backend instances, ensuring high availability and optimal performance[9]. SSL/TLS termination at the gateway level simplifies certificate management while providing end-to-end encryption for sensitive data[9].</p>
-      <p>Rate limiting protects APIs from abuse and ensures fair resource allocation among different consumers[14]. Advanced rate limiting strategies include burst allowances for temporary spikes, different limits for different user tiers, and dynamic adjustment based on system capacity[14]. Monitoring and alerting systems track API usage patterns, response times, and error rates to identify potential issues before they impact users[14].</p>
-      <p>Authentication and authorization mechanisms at the API gateway level provide centralized security controls for all backend services[14]. OAuth 2.0, JWT tokens, and API key management enable flexible access control policies while maintaining audit trails for compliance requirements[14]. These mechanisms integrate with existing identity providers and support various authentication methods for different types of clients.</p>
-
-      <h2>Compliance and Cost Optimization</h2>
-      <h3>Regulatory Compliance and Audit Requirements</h3>
-      <p>Compliance-driven controls must align with frameworks such as the NIST Cybersecurity Framework to ensure adherence to regulatory requirements including GDPR, ISO 27001, and industry-specific regulations[17]. Organizations require documented procedures for data handling, access controls, and audit trail maintenance to demonstrate compliance during regulatory assessments[17]. Automated compliance monitoring tools continuously assess system configurations and alert teams to potential violations before they become audit findings.</p>
-      <p>Security and compliance integration throughout the CI/CD pipeline ensures that regulatory requirements are addressed at every stage of the deployment process[8]. DevSecOps practices embed security controls into development workflows, enabling early detection of compliance issues and automated remediation where possible[8]. Regular security assessments and penetration testing validate the effectiveness of security controls and identify areas for improvement.</p>
-
-      <h3>Cost Optimization Strategies</h3>
-      <p>Cost optimization requires comprehensive analysis of resource utilization, scaling patterns, and service selection to minimize expenses while maintaining performance requirements[10]. Cloud-native architectures provide elastic scaling capabilities that automatically adjust resources based on demand, reducing costs during low-utilization periods[10]. Right-sizing of compute resources, storage optimization, and efficient data transfer strategies contribute to significant cost reductions[30].</p>
-      <p>AI infrastructure costs require particular attention due to the expensive nature of specialized hardware like GPUs and TPUs[30][31]. Organizations must balance on-premises investments with cloud-based pay-as-you-go models, considering factors such as utilization patterns, data transfer costs, and management overhead[32]. Reserved instances and spot pricing for non-critical workloads can provide substantial cost savings for predictable workloads[10].</p>
-      <p>Monitoring and alerting systems track resource utilization and costs in real-time, enabling proactive optimization and budget management[10]. Automated policies can shut down unused resources, scale down over-provisioned systems, and optimize storage tiers based on access patterns[10]. Regular cost reviews and optimization initiatives ensure ongoing efficiency improvements and budget adherence.</p>
-
-      <h2>Conclusion</h2>
-      <p>Enterprise-grade production deployment represents a complex orchestration of technology, processes, and organizational capabilities that demands comprehensive planning and execution excellence. The practices outlined in this guide demonstrate that successful organizations achieve significant competitive advantages through systematic implementation of modern deployment strategies, with measurable improvements including 65% higher success rates in production deployments and 41% reduction in operational overhead[1]. The convergence of container orchestration, AI-powered monitoring, and automated security practices creates resilient deployment frameworks capable of supporting the most demanding enterprise workloads.</p>
-      <p>The future of production deployment continues evolving toward increased automation, intelligent decision-making, and proactive issue resolution through machine learning and artificial intelligence integration[13][24][25]. Organizations that embrace these advanced practices while maintaining rigorous security, compliance, and operational standards position themselves for sustained success in increasingly competitive markets. The investment in comprehensive deployment capabilities pays dividends through improved system reliability, faster time-to-market, enhanced security posture, and optimized resource utilization that directly impacts business outcomes and customer satisfaction.</p>
-      <p>As technology landscapes continue evolving with emerging trends such as edge computing, serverless architectures, and federated learning, the fundamental principles of thorough planning, robust automation, comprehensive monitoring, and continuous improvement remain constant[8][35]. Success in enterprise deployment requires not only technical expertise but also organizational commitment to excellence, continuous learning, and adaptation to changing requirements and technologies. The practices documented here provide a solid foundation for organizations seeking to master the complexities of modern production deployment while preparing for future challenges and opportunities.</p>
-    </div>
-  );
+export const metadata: Metadata = {
+  title: "Deployment Best Practices | Agentic AI AMRO Ltd",
+  description: "Enterprise-grade production deployment best practices for AI applications and systems.",
 };
 
-export default DeploymentBestPracticesPage;
+export default function DeploymentBestPracticesPage() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-[#0A051E] via-[#120B2E] to-[#1A0B3A] pt-24">
+      {/* Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
+        <div className="absolute -top-32 -left-32 w-64 h-64 bg-gradient-to-r from-purple-600/10 to-blue-600/10 rounded-full filter blur-3xl" />
+        <div className="absolute -bottom-32 -right-32 w-64 h-64 bg-gradient-to-r from-pink-600/10 to-purple-600/10 rounded-full filter blur-3xl" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      </div>
+      
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Back Button */}
+        <Link href="/resources" className="inline-flex items-center text-purple-400 hover:text-purple-300 mb-8 transition-colors">
+          <ArrowLeft className="w-4 h-4 mr-2" />
+          Back to Resources
+        </Link>
+
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-600 to-blue-600 rounded-full mb-6">
+            <Rocket className="w-8 h-8 text-white" />
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+            Deployment Best Practices
+          </h1>
+          <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
+            Enterprise-grade production deployment best practices for AI applications and systems.
+          </p>
+        </div>
+
+        {/* Download Button */}
+        <div className="text-center mb-12">
+          <Button className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-3 rounded-lg text-lg font-semibold transition-all duration-300">
+            <Download className="w-5 h-5 mr-2" />
+            Download Complete Guide
+          </Button>
+        </div>
+
+        {/* Content */}
+        <div className="prose prose-invert prose-lg max-w-none">
+          <div className="bg-gradient-to-br from-purple-900/20 to-blue-900/20 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8 mb-8">
+            <h2 className="text-2xl font-bold text-white mb-6 flex items-center">
+              <Rocket className="w-6 h-6 mr-3 text-blue-400" />
+              Why Deployment Matters
+            </h2>
+            <p className="text-gray-300 leading-relaxed">
+              Proper deployment practices are crucial for AI applications. This guide covers containerization, CI/CD pipelines, monitoring, security, and scalability considerations for production AI systems.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <div className="bg-gradient-to-br from-blue-900/20 to-indigo-900/20 backdrop-blur-sm border border-blue-500/20 rounded-xl p-6">
+              <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
+                <GitBranch className="w-5 h-5 mr-2 text-blue-400" />
+                CI/CD Pipeline
+              </h3>
+              <ul className="text-gray-300 space-y-2">
+                <li>• Automated testing and validation</li>
+                <li>• Code quality and security scans</li>
+                <li>• Gradual rollout strategies</li>
+                <li>• Rollback mechanisms</li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-br from-green-900/20 to-emerald-900/20 backdrop-blur-sm border border-green-500/20 rounded-xl p-6">
+              <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
+                <Monitor className="w-5 h-5 mr-2 text-green-400" />
+                Monitoring & Observability
+              </h3>
+              <ul className="text-gray-300 space-y-2">
+                <li>• Real-time performance metrics</li>
+                <li>• Error tracking and alerting</li>
+                <li>• Resource utilization monitoring</li>
+                <li>• User behavior analytics</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-br from-purple-900/20 to-blue-900/20 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8 mb-8">
+            <h2 className="text-2xl font-bold text-white mb-6">Deployment Architecture</h2>
+            
+            <div className="space-y-6">
+              <div>
+                <h3 className="text-xl font-semibold text-purple-400 mb-3">1. Containerization Strategy</h3>
+                <div className="bg-gray-900/50 rounded-lg p-4 mb-4">
+                  <code className="text-green-400">
+                    # Multi-stage Docker build<br/>
+                    FROM python:3.11-slim as base<br/>
+                    WORKDIR /app<br/>
+                    COPY requirements.txt .<br/>
+                    RUN pip install --no-cache-dir -r requirements.txt
+                  </code>
+                </div>
+                <ul className="text-gray-300 space-y-2 ml-4">
+                  <li>✓ Multi-stage builds for optimization</li>
+                  <li>✓ Security scanning and vulnerability management</li>
+                  <li>✓ Resource limits and health checks</li>
+                  <li>✓ Minimal base images</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-purple-400 mb-3">2. Infrastructure as Code</h3>
+                <ul className="text-gray-300 space-y-2 ml-4">
+                  <li>✓ Terraform or CloudFormation templates</li>
+                  <li>✓ Version-controlled infrastructure</li>
+                  <li>✓ Environment parity</li>
+                  <li>✓ Automated provisioning</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-purple-400 mb-3">3. Orchestration & Scaling</h3>
+                <ul className="text-gray-300 space-y-2 ml-4">
+                  <li>✓ Kubernetes for container orchestration</li>
+                  <li>✓ Horizontal pod autoscaling</li>
+                  <li>✓ Load balancing and service mesh</li>
+                  <li>✓ Zero-downtime deployments</li>
+                </ul>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-purple-400 mb-3">4. Security & Compliance</h3>
+                <ul className="text-gray-300 space-y-2 ml-4">
+                  <li>✓ Network policies and segmentation</li>
+                  <li>✓ Secret management (Vault, K8s secrets)</li>
+                  <li>✓ RBAC and identity management</li>
+                  <li>✓ Compliance monitoring and reporting</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            <div className="bg-gradient-to-br from-red-900/20 to-orange-900/20 backdrop-blur-sm border border-red-500/20 rounded-xl p-6 text-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Shield className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold text-white mb-2">Security First</h3>
+              <p className="text-gray-300">End-to-end security practices</p>
+            </div>
+
+            <div className="bg-gradient-to-br from-green-900/20 to-emerald-900/20 backdrop-blur-sm border border-green-500/20 rounded-xl p-6 text-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-green-600 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Monitor className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold text-white mb-2">Observable</h3>
+              <p className="text-gray-300">Comprehensive monitoring setup</p>
+            </div>
+
+            <div className="bg-gradient-to-br from-blue-900/20 to-indigo-900/20 backdrop-blur-sm border border-blue-500/20 rounded-xl p-6 text-center">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Rocket className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-lg font-semibold text-white mb-2">Scalable</h3>
+              <p className="text-gray-300">Auto-scaling and performance</p>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-8">
+            <h2 className="text-2xl font-bold text-white mb-6">Deployment Checklist</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="text-lg font-semibold text-purple-400 mb-3">Pre-Deployment</h4>
+                <ul className="text-gray-300 space-y-2">
+                  <li>✓ Code review and testing</li>
+                  <li>✓ Security scan and vulnerability assessment</li>
+                  <li>✓ Performance benchmarking</li>
+                  <li>✓ Documentation updates</li>
+                  <li>✓ Backup and rollback plan</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="text-lg font-semibold text-purple-400 mb-3">Post-Deployment</h4>
+                <ul className="text-gray-300 space-y-2">
+                  <li>✓ Health checks and smoke tests</li>
+                  <li>✓ Monitor key metrics</li>
+                  <li>✓ User acceptance testing</li>
+                  <li>✓ Performance validation</li>
+                  <li>✓ Incident response readiness</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
