@@ -1,5 +1,7 @@
 "use client";
 
+"use client";
+
 import { motion } from "framer-motion";
 import { Users, Cpu, Zap, RefreshCw } from "lucide-react";
 
