@@ -1,14 +1,15 @@
 import { NextResponse } from 'next/server';
 const brevo = require('@getbrevo/brevo');
 
-let defaultClient = brevo.ApiClient.instance;
-let apiKey = defaultClient.authentications['api-key'];
-apiKey.apiKey = process.env.BREVO_API_KEY!;
-
-let apiInstance = new brevo.TransactionalEmailsApi();
-
 export async function POST(req: Request) {
   try {
+    console.log('Brevo module:', brevo);
+    let defaultClient = brevo.ApiClient.instance;
+    let apiKey = defaultClient.authentications['api-key'];
+    apiKey.apiKey = process.env.BREVO_API_KEY!;
+
+    let apiInstance = new brevo.TransactionalEmailsApi();
+
     const data = await req.json();
     const { name, email, phone, service, date, message } = data;
 
