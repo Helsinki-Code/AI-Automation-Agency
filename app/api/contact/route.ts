@@ -1,15 +1,18 @@
 import { NextResponse } from 'next/server';
-import * as SibApiV3Sdk from '@sendinblue/client';
+const brevo = require('@getbrevo/brevo');
 
-const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
-apiInstance.setApiKey(SibApiV3Sdk.TransactionalEmailsApiApiKeys.apiKey, process.env.BREVO_API_KEY!);
+let defaultClient = brevo.ApiClient.instance;
+let apiKey = defaultClient.authentications['api-key'];
+apiKey.apiKey = process.env.BREVO_API_KEY!;
+
+let apiInstance = new brevo.TransactionalEmailsApi();
 
 export async function POST(req: Request) {
   try {
     const data = await req.json();
     const { name, email, phone, service, date, message } = data;
 
-    const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
+    const sendSmtpEmail = new brevo.SendSmtpEmail();
     sendSmtpEmail.subject = `New Contact Form Submission from ${name}`;
     sendSmtpEmail.htmlContent = `
       <h2>New Contact Form Submission</h2>
