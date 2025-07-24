@@ -252,7 +252,7 @@ export function ComparisonTable() {
                     </div>
                     {comparisonData.tiers.map((tier) => (
                       <div key={`${item}-${tier.name}`} className="flex justify-center items-center">
-                        {renderFeatureCell(tier.features[item])}
+                        {renderFeatureCell(tier.features[item as keyof typeof tier.features])}
                       </div>
                     ))}
                   </div>
