@@ -2,29 +2,35 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { MessageSquare, Phone, Mail, MapPin, Clock, Users, ArrowRight, Sparkles } from "lucide-react";
+import { MessageSquare, Phone, Mail, MapPin, Clock, Users, ArrowRight, Sparkles, Calendar } from "lucide-react";
+import { companyInfo } from "@/data/company";
 
 const contactMethods = [
   {
-    icon: MessageSquare,
-    title: "Live Chat",
-    description: "Get instant responses to your questions",
-    action: "Start Chat",
-    gradient: "from-blue-500 to-cyan-500",
-  },
-  {
     icon: Phone,
-    title: "Phone Call",
+    title: "Call Us",
     description: "Speak directly with our AI experts",
-    action: "Schedule Call",
-    gradient: "from-green-500 to-emerald-500",
+    action: companyInfo.phone,
+    gradient: "from-green-600 to-emerald-600",
+    onClick: () => window.open(`tel:${companyInfo.phone}`),
   },
   {
     icon: Mail,
-    title: "Email Support",
-    description: "Detailed responses within 24 hours",
-    action: "Send Email",
-    gradient: "from-purple-500 to-pink-500",
+    title: "Email Us",
+    description: "Get detailed responses to your queries",
+    action: `mailto:${companyInfo.email}`,
+    gradient: "from-blue-600 to-cyan-600",
+    onClick: () => window.open(`mailto:${companyInfo.email}`),
+  },
+  {
+    icon: Calendar,
+    title: "Schedule a Call",
+    description: "Book a consultation that fits your schedule",
+    action: "/contact#meeting",
+    gradient: "from-purple-600 to-pink-600",
+    onClick: () => {
+      document.getElementById('meeting')?.scrollIntoView({ behavior: 'smooth' });
+    },
   },
 ];
 
